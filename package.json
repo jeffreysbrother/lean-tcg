@@ -1,0 +1,51 @@
+{
+  "name": "generator-tcg",
+  "version": "2.8.4",
+  "description": "rename stuff!",
+  "license": "BSD-2-Clause",
+  "repository": "jeffreysbrother/generator-tcg",
+  "author": "James Cool",
+  "main": "app/index.js",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=1.3"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec --timeout 3000"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "The Control Group",
+    "TCG",
+    "front-end",
+    "automation",
+    "rename",
+    "utility",
+    "copy",
+    "file names",
+    "duplicate",
+    "split test",
+    "splittest",
+    "A/B",
+    "optimization",
+    "chalk",
+    "fs-extra",
+    "shelljs",
+    "simple-git",
+    "yo",
+    "yeoman",
+    "James Cool",
+    "jeffreysbrother"
+  ],
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "extfs": "0.0.7",
+    "fs-extra": "^7.0.0",
+    "shelljs": "^0.8.2",
+    "simple-git": "^1.105.0",
+    "yeoman-generator": "^3.1.1"
+  }
+}
