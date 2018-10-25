@@ -343,23 +343,29 @@ prompt(questions).then(answers => {
 			}
     });
 
+    function rename() {
+      return new Promise(resolve => {
+        pathsToNewVariations.forEach(variation => {
+          fse.readdir(variation, (err, files) => {
+            // skip hidden files
+            files = files.filter(item => !(ignoreHiddenFiles).test(item));
+            files.forEach(file => {
+              let fullPath = `${variation}/${file}`,
+                newPart = path.basename(path.dirname(fullPath));
+              fse.rename(fullPath, fullPath.replace(originalDir, newPart), err => {
+                if (err) throw err;
+                resolve();
+              });
+            });
+          });
+        });
+      });
+    }
 
-    pathsToNewVariations.forEach(variation => {
-			fse.readdir(variation, (err, files) => {
-	      // skip hidden files
-	      files = files.filter(item => !(ignoreHiddenFiles).test(item));
-	      files.forEach(file => {
-	        let fullPath = `${variation}/${file}`,
-						newPart = path.basename(path.dirname(fullPath));
-					fse.rename(fullPath, fullPath.replace(originalDir, newPart), err => {
-						if (err) throw err;
-					});
-	      });
-	    });
-    });
 
 
-    setTimeout(function() {
+    (async function asyncCall() {
+      await rename();
       if (!args.includes('--skip-comment')) {
         pathsToNewVariations.forEach(variation => {
           fse.readdir(variation, (err, files) => {
@@ -394,7 +400,7 @@ prompt(questions).then(answers => {
           });
         });
       }
-    }, 50);
+    })();
 
 
     // MESSAGING ---------------------------
@@ -411,25 +417,23 @@ prompt(questions).then(answers => {
     // END MESSAGING ---------------------------
 
 
-    setTimeout(function () {
-      if (!args.includes('--skip-git') && isGit === true) {
-        try {
-          simpleGit()
-            .checkoutBranch(newBranch, 'master', () => {
-              console.log(chalk.yellow(`Switched to new branch ${newBranch}`));
-            })
-            .add('./*')
-            .commit(`copied ${originalDir}`, () => {
-              console.log(chalk.yellow('Changes staged and committed'));
-            })
-            .push(['-u', 'origin', `${newBranch}`], () => {
-              console.log(chalk.yellow('Pushed!'));
-            });
-        } catch (err) {
-          console.log(err);
-        }
+    if (!args.includes('--skip-git') && isGit === true) {
+      try {
+        simpleGit()
+          .checkoutBranch(newBranch, 'master', () => {
+            console.log(chalk.yellow(`Switched to new branch ${newBranch}`));
+          })
+          .add('./*')
+          .commit(`copied ${originalDir}`, () => {
+            console.log(chalk.yellow('Changes staged and committed'));
+          })
+          .push(['-u', 'origin', `${newBranch}`], () => {
+            console.log(chalk.yellow('Pushed!'));
+          });
+      } catch (err) {
+        console.log(err);
       }
-    }, 50);
+    }
 
 });
 
