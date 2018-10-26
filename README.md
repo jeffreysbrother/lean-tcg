@@ -94,3 +94,4 @@ Two additional prompts will appear if the user has a missing `config.json` file 
 - [ ] Autocomplete upon hitting tab during the first two prompts.
 - [ ] Retrieve default variation automatically. Maybe ask "Copy default variation?" which defaults to "yes" (so we have the option to select another, if necessary).
 - [ ] Populate `config.json` as needed if it is empty.
+- [ ] In the process of creating a missing config file, if something goes wrong an empty config file will be created. This is a small inconvenience.
