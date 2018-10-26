@@ -1,9 +1,9 @@
 {
-  "name": "lean-tcg2",
+  "name": "lean-tcg",
   "version": "0.0.1",
   "description": "rename stuff!",
   "license": "BSD-2-Clause",
-  "repository": "jeffreysbrother/lean-tcg2",
+  "repository": "jeffreysbrother/lean-tcg",
   "author": "James Cool",
   "main": "app/index.js",
   "engines": {
