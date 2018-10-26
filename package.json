@@ -6,6 +6,9 @@
   "repository": "jeffreysbrother/lean-tcg",
   "author": "James Cool",
   "main": "app/index.js",
+  "bin": {
+    "lean-tcg": "./app/index.js"
+  },
   "engines": {
     "node": ">=4",
     "npm": ">=1.3"

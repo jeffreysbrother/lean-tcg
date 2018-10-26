@@ -1,4 +1,4 @@
-# Generator-TCG
+# lean-TCG
 
 A command line utility for The Control Group split testing team. An existing directory (the default variation) is cloned and renamed according to a pre-established convention. The new files will then serve as a variation against which the control will be tested.
 
@@ -44,15 +44,15 @@ funnel
                     └── jc-01.php
 ```
 
-Chances are, your project will not be structured in this way. If this is the case, you can run the command `yo tcg --create-tree` to generate a dummy file tree just like the one above. After doing this, simply move into the `funnel/` directory and execute `yo tcg` again.
+Chances are, your project will not be structured in this way. If this is the case, you can run the command `lean-tcg --create-tree` to generate a dummy file tree just like the one above. After doing this, simply move into the `funnel/` directory and execute `lean-tcg` again.
 
 ## Installation:
 
-`npm install --global yo generator-tcg`
+`npm install --global lean-tcg`
 
 ## How to Use:
 
-When the command `yo tcg` is executed, the user must answer four questions. Here's an example of how one might answer:
+When the command `lean-tcg` is executed, the user must answer four questions. Here's an example of how one might answer:
 
 * **What section are you working on?**  report-review
 * **Which directory do you wish to copy?**  ga-33
