@@ -182,7 +182,7 @@ const questions = [{
   name: 'howMany',
   message: 'How many variations would you like?',
   filter: value => {
-    return value.toLowerCase().replace(/\s/g,'');
+    return value;
   },
   validate: value => {
     if (!isNaN(parseFloat(value)) && isFinite(value) && value % 1 === 0) {
@@ -204,7 +204,7 @@ const questions = [{
   when: !args.includes('--skip-git') && isGit === true && (answers => answers.createConfig || !configMissing),
   type: 'input',
   name: 'blurb',
-  message: 'Please enter a short branch description:',
+  message: 'Please enter a short branch name:',
   filter: value => {
     return value.toLowerCase().replace(/\s/g,'');
   },
